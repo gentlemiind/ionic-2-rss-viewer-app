@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <ion-title>
+            {{displayName}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- 
+
+    <div class="navcontainer">
+        <div class="nav">
+
+            <ion-chip (click)="viewStadium()">
+                <ion-icon name="pin" color="dark"></ion-icon>
+                <ion-label>Stadiums</ion-label>
+            </ion-chip>
+            <ion-chip (click)="viewTeams()">
+                <ion-icon name="heart" color="dark"></ion-icon>
+                <ion-label>Teams</ion-label>
+            </ion-chip>
+
+            <ion-chip (click)="viewChannels()">
+                <ion-icon name="eye" color="dark"></ion-icon>
+                <ion-label>Tv channels</ion-label>
+            </ion-chip>
+        </div>
+
+
+
+    </div> -->
+
+    <ion-fab bottom right>
+        <button ion-fab>options</button>
+
+        <ion-fab-list side="top">
+            <button ion-fab (click)="logout()">Logout</button>
+            <button ion-fab (click)="viewTeams()">teams</button>
+            <button ion-fab (click)="viewStadium()">Stadiums</button>
+            <button ion-fab (click)="viewChannels()">channels</button>
+            <button ion-fab (click)="showLeaderboard()">leaderboard</button>
+
+
+
+
+        </ion-fab-list>
+    </ion-fab>
+
+
+
+    <ion-card *ngFor="let team of teams">
+        <img [src]="team.flag || team.image || team.icon" />
+        <ion-card-content>
+            <ion-card-title>
+                {{team.name}}
+            </ion-card-title>
+            <p>
+                {{ (team.city && 'in the city of ' + team.city) || (team.country && 'from ' + team.country) || (team.fifaCode && ' fifa code is ' + team.fifaCode)}}
+            </p>
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>
